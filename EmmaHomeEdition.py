@@ -10,6 +10,20 @@ voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
 
 
+def take_Command():
+    try:
+        with sr.Microphone() as source:
+            print("Waiting patiently..")
+            voice = listener.listen(source)
+            command = listener.recognize_google(voice)
+            command = command.lower()
+            if "Emma" in command:
+                command - command.replace("Emma", '')
+                print(command)
+    except:
+        pass
+    return command
+
 def talk(text):
     engine.say(text)
     engine.runAndWait()
